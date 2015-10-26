@@ -5,7 +5,12 @@ angular.module('beliefInMotionApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
-    }];
+    },
+    {
+      'title': 'Donate',
+      'link': '/donate'
+    }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
