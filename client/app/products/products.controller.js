@@ -4,8 +4,12 @@ angular.module('beliefInMotionApp')
 .controller('ProductsCtrl', function($state, productService, cartService) {
 
   this.searchText = '';
-  this.products = productService.inventory;
   this.cart = cartService.cart;
+  var that = this;
+
+  productService.getProducts().then(function(json) {
+    that.products = json.data;
+  });
 
   this.addProduct = function(product) {
     cartService.addProduct(product);

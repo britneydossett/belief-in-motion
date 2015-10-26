@@ -2,12 +2,14 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var CartProduct = require('../cart/cartproduct.model');
 var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   name: String,
   email: { type: String, lowercase: true },
+  cart: [CartProduct.schema],
   role: {
     type: String,
     default: 'user'
