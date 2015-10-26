@@ -1,3 +1,56 @@
-<div class="col-md-12">
-This is the products view.
-</div>
+<section class="container search">
+  <form class="navbar-form" role="search">
+    <div class="form-group">
+      <input type="text" class="form-control" name="search" ng-model="ctrl.searchText" placeholder="Search">
+    </div>
+    <button type="clear" class="btn btn-warning"
+            ng-click="ctrl.searchText = ''">Reset</button>
+  </form>
+</section>
+
+<section class="container products">
+  <div class="list-group">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animate-products"
+           ng-repeat="product in filteredProducts = ( ctrl.products | productFilter : ctrl.searchText | orderBy: ['category', 'price'] )">
+        <a ng-click="ctrl.goProduct(product)" class="list-group-product">
+          <h3>{{ product.name }}</h3>
+          <article class="row">
+            <!-- <div class="col-xs-5">
+              <img class="middle" width=96px ng-src="/assets/images/{{item.imageFile}}"/>
+            </div> -->
+            <div class="col-xs-7">
+              <dl class="dl-horizontal">
+                <dt>Category:</dt>
+                <dd>{{ product.category }}</dd>
+                <dt>Price:</dt>
+                <dd>{{ product.price | currency }}</dd>
+                <dt>Description:</dt>
+                <dd>{{ product.description }}</dd>
+              </dl>
+            </div>
+          </article>
+        </a>
+        <div class="text-center">
+          <button class="btn btn-sm btn-success" ng-click="ctrl.addProduct(product)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="animate-products text-center" ng-hide="filteredProducts.length">
+        <h3>No items match your search.</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cart text-center">
+  <h2>Your Cart:</h2>
+  <ul>
+    <li class="cart animate-cart" ng-repeat="item in ctrl.cart">
+      <span>{{ product.qty + ' x ' + product.description + ' = ' + (ctrl.getCost(product) | currency) }}</span>
+      <button class="btn btn-danger btn-xs" ng-click="ctrl.removeProduct(product)">Remove Product</button>
+    </li>
+  </ul>
+  <h3>Total: {{ ctrl.getTotal() | currency }}</h3>
+  <br>
+  <button class="btn btn-danger" ng-click="ctrl.clearCart()">Clear Cart</button>
+</section>

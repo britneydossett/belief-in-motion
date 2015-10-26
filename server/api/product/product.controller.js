@@ -5,9 +5,9 @@ var Product = require('./product.model');
 // Get list of products
 exports.getAll = function(req, res) {
   Product.find(function(error, products) {
-    if(error) response.json({message: 'Could not find a product'});
+    if(error) res.json({message: 'Could not find a product'});
 
-    response.json({products: products});
+    res.json({products: products});
   });
 };
 
