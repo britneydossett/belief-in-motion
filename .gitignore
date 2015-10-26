@@ -7,3 +7,7 @@ client/bower_components
 dist
 /server/config/local.env.js
 npm-debug.log
+=1.2.0
+bower-component
+.DS_Store
+bower-components
