@@ -2,26 +2,26 @@
 
 angular.module('beliefInMotionApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
+    $scope.Products = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
+    $http.get('/api/products').success(function(Products) {
+      $scope.Products = Products;
+      socket.syncUpdates('thing', $scope.Products);
     });
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
+    $scope.addProduct = function() {
+      if($scope.newProduct === '') {
         return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+      $http.post('/api/products', { name: $scope.Product });
+      $scope.newProduct = '';
     };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
+    $scope.removeProduct = function(product) {
+      $http.delete('/api/products/' + thing._id);
     };
 
     $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
+      socket.unsyncUpdates('product');
     });
   });

@@ -9,6 +9,9 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
 var mongoose = require('mongoose');
+var path = require('path');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
 var config = require('./config/environment');
 
 // Connect to database
@@ -21,6 +24,10 @@ mongoose.connection.on('error', function(err) {
 // Populate DB with sample data
 if(config.seedDB) { require('./config/seed'); }
 
+// app.use(logger('dev'));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+
 // Setup server
 var app = express();
 var server = require('http').createServer(app);
@@ -30,7 +37,7 @@ var socketio = require('socket.io')(server, {
 });
 require('./config/socketio')(socketio);
 require('./config/express')(app);
-require('./routes')(app);
+require('./routes');
 
 // Start server
 server.listen(config.port, config.ip, function () {
