@@ -3,36 +3,62 @@
 angular.module('beliefInMotionApp')
 .controller('ProductsCtrl', function($state, productService, cartService) {
 
-  this.searchText = '';
-  this.cart = cartService.cart;
   var that = this;
 
-  productService.getProducts().then(function(json) {
-    that.products = json.data;
+  that.searchText = '';
+  that.total = 0;
+
+  that.getInventory = function() {
+    productService.getProducts().then(function(json) {
+      that.inventory = json.data.products;
+      console.log(that.inventory);
+    });
+  };
+
+  cartService.getCart().then(function(json) {
+    that.cart = json.data;
+    console.log('that.cart: ', JSON.stringify(that.cart));
+    that.total = cartService.getTotal(that.cart);
   });
 
-  this.addProduct = function(product) {
-    cartService.addProduct(product);
+  that.getInventory();
+
+  that.addProduct = function(product) {
+    console.log('addProduct:', product);
+    cartService.addProduct(product).then(function(json) {
+      that.cart = json.data;
+      that.total = cartService.getTotal(that.cart);
+    }, function(err) {
+      console.log('ERROR: addProduct post: ' + JSON.stringify(err));
+    });
   };
 
-  this.removeProduct = function(product) {
-    cartService.removeProduct(product);
+  that.removeProduct = function(cartItem) {
+    cartService.removeProduct(cartItem).then(function(json) {
+      that.cart = json.data;
+      that.total = cartService.getTotal(that.cart);
+    }, function(err) {
+      console.log('ERROR: removeProduct delete: ' + JSON.stringify(err));
+    });
   };
 
-  this.getCost = function(product) {
-    return cartService.getCost(product);
+  that.getCost = function(cartItem) {
+    return cartService.getCost(cartItem);
   };
 
-  this.getTotal = function() {
-    return cartService.getTotal();
+  that.clearCart = function() {
+    return cartService.clearCart().then(function(json) {
+      that.cart = json.data;
+      that.total = cartService.getTotal(that.cart);
+    }, function(err) {
+      console.log('clearCart delete ERROR: ' + JSON.stringify(err));
+    });
   };
 
-  this.clearCart = function() {
-    return cartService.clearCart();
-  };
-
-  this.goProduct = function (product) {
-    console.log('goProduct: ' + product._id);
+  that.goProduct = function (product) {
+    console.log("goProduct: ", product._id);
+    console.log($state.go ('productDetail', product));
     $state.go( 'productDetail', { productId : product._id } );
   };
+
 });

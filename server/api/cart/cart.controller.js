@@ -5,10 +5,10 @@ var CartProduct = require('./cartproduct.model');
 var Product = require('../product/product.model');
 var User = require('../user/user.model');
 
-function findProductInCart(user, id) {
+function findProductInCart(user, productId) {
   return _.find(user.cart, function(cartProduct) {
-    console.log('Comparing ' + cartProduct.product + ' to ' + id);
-    return cartProduct.product.equals(id) || cartProduct._id.equals(id);
+    console.log('Comparing cart ctrl ' + productId + ' to ' + cartProduct.item._id);
+    return cartProduct.item._id.equals(productId);
   });
 }
 
@@ -19,9 +19,9 @@ exports.get = function(req, res) {
   console.log('userId: ' + userId);
 
   User.findById(userId)
-  .populate('cart.product')
+  .populate('cart.item')
   .exec(function(err, user) {
-    console.log('user: ' + user.name);
+    // console.log('user: ' + user.name);
     if (err) { return handleError(res, err); }
     if (!user) { return res.send(404); }
     console.log('returning cart: ' + JSON.stringify(user.cart));
@@ -36,29 +36,29 @@ exports.addProduct = function(req, res) {
   var productId = req.params.productid.trim();
   console.log('userId: ' + userId + ', productId: ' + productId);
 
-  Product.findById(productId, function(err, product) {
-    if (err) { return handleError(res, err); }
-    if (!product) { return res.send(404); }
-    User.findById(userId, function(err, user) {
-      if (err) { return handleError(res, err); }
-      if (!user) { return res.send(404); }
-
-      // Check if item is already in cart
-      var found = findProductInCart(user, product._id);
-      if (found) {
-        console.log('Found product ' + product.name + ' in cart, therefore incrementing qty');
-        found.qty = found.qty + 1;
-      }
-      else {
-        console.log('Adding product to cart: ' + product.name);
-        user.cart.push( new CartProduct( { product: product, qty: 1 } ) );
-      }
+  User.findById(userId)
+  .populate('cart.item')
+  .exec(function(err, user) {
+    // Check if item is already in cart
+    var found = findProductInCart(user, productId);
+    if (found) {
+      console.log('Found product ' + found + ' in cart, therefore incrementing qty');
+      found.qty = found.qty + 1;
       user.save(function() {
-        user.populate('cart.product', function(err, user) {
-          return res.json(201, user.cart );
+        return res.json(201, user.cart);
+      });
+    }
+    else {
+      Product.findById(productId, function(err, product) {
+        if (err) { return handleError(res, err); }
+        if (!product) { return res.send(404); }
+        console.log('Adding product to cart: ' + product.name);
+        user.cart.push( new CartProduct( { item: product, qty: 1 } ) );
+        user.save(function() {
+          return res.json(201, user.cart);
         });
       });
-    });
+    }
   });
 };
 
@@ -66,8 +66,8 @@ exports.addProduct = function(req, res) {
 exports.removeProduct = function(req, res) {
   console.log('removeProduct, url = ' + req.url);
   var userId = req.params.userid;
-  var cartProductId = req.params.productid;
-  console.log('userId: ' + userId + ', cartProductId: ' + cartProductId);
+  var productId = req.params.productid;
+  console.log('userId2: ' + userId + ', productId2: ' + productId);
 
   // Remove the item, get the updated cart, and return the cart
   User.findById(userId, function(err, user) {
@@ -75,10 +75,10 @@ exports.removeProduct = function(req, res) {
     if (!user) { return res.send(404); }
 
     // Check if item is already in cart
-    var found = findProductInCart(user, cartProductId);
+    var found = findProductInCart(user, productId);
     if (found) {
       console.log('Removing product from cart');
-      user.cart.pull(found._id);               // pull is a feature of MongooseArray!
+      user.cart.pull(found.item._id);               // pull is a feature of MongooseArray!
     }
     else {
       return res.send(404);
@@ -102,7 +102,7 @@ exports.removeAllProducts = function(req, res) {
     if (err) { return handleError(res, err); }
     if (!user) { return res.send(404); }
 
-    user.cart = new Array();
+    user.cart = [];
     user.save(function() {
       user.populate('cart.products', function(err, user) {
         return res.send(204, user.cart);

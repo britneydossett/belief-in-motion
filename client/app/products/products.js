@@ -6,6 +6,6 @@ angular.module('beliefInMotionApp')
       .state('products', {
         url: '/products',
         templateUrl: 'app/products/products.html',
-        controller: 'ProductsCtrl'
+        controller: 'ProductsCtrl as products'
       });
   });

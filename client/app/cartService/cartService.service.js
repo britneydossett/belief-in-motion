@@ -1,44 +1,44 @@
 'use strict';
 
 angular.module('beliefInMotionApp')
-.service('cartService', function() {
+.service('cartService', function($http, Auth) {
 
-  var that = this;
+   var that = this;
 
-  that.cart = [];
-
-  function findItemById(products, id) {
-    return _.find(products, function(product) {
-      return product._id === id;
-    });
-  }
+  that.getCart = function() {
+    var userId = Auth.getCurrentUser()._id;
+      return $http.get('/api/users/' + userId + '/cart/');
+  };
 
   that.addProduct = function(product) {
-    var found = findItemById(that.cart, product._id);
-    if (found) {
-      found.qty += product.qty;
+    var userId = Auth.getCurrentUser()._id;
+    if (userId) {
+      return $http.post('/api/users/' + userId + '/cart/' + product._id);
     }
     else {
-      that.cart.push(angular.copy(product));
+      return $http.get('/signup');
     }
   };
 
-  that.removeProduct = function(product) {
-    var index = that.cart.indexOf(product);
-    that.cart.splice(index, 1);
+  that.removeProduct = function(productId) {
+    var userId = Auth.getCurrentUser()._id;
+    console.log('cart product: ', productId);
+    return $http.delete('/api/users/' + userId + '/cart/' + productId);
   };
 
-  that.getCost = function(item) {
-    return product.qty * product.price;
+  that.getCost = function(cartItem) {
+      return cartItem.qty * cartItem.item.price;
   };
 
-  that.getTotal = function() {
-    return _.reduce(that.cart, function(sum, product) {
-      return sum + that.getCost(product);
+  that.getTotal = function(cart) {
+    var total = _.reduce(cart, function(sum, cartProduct) {
+      return sum + that.getCost(cartProduct);
     }, 0);
+    return total;
   };
 
   that.clearCart = function() {
-    that.cart.length = 0;
+    var userId = Auth.getCurrentUser()._id;
+    return $http.delete('/api/users/' + userId + '/cart/');
   };
 });

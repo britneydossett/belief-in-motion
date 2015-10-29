@@ -5,7 +5,7 @@ angular.module('beliefInMotionApp')
   $stateProvider
   .state('productDetail', {
       url: '/products/:productId',
-      templateUrl: 'app/productDetail/productDetail.html',
+      templateUrl: 'app/products/productDetail/productDetail.html',
       controller: 'ProductDetailCtrl as ctrl',
       onEnter: function() {
         console.log('Entering productDetail');

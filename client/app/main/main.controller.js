@@ -18,10 +18,10 @@ angular.module('beliefInMotionApp')
     };
 
     $scope.removeProduct = function(product) {
-      $http.delete('/api/products/' + thing._id);
+      $http.delete('/api/products/' + product._id);
     };
 
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('product');
     });
-  });
+});

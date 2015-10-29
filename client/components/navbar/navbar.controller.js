@@ -7,8 +7,12 @@ angular.module('beliefInMotionApp')
       'link': '/'
     },
     {
+      'title': 'About',
+      'link': '/about'
+    },
+    {
       'title': 'Donate',
-      'link': '/donate'
+      'link': '/products'
     }
     ];
 

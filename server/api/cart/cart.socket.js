@@ -4,7 +4,7 @@
 
 'use strict';
 
-var Cart = require('./cart.model');
+var Cart = require('./cartproduct.model');
 
 exports.register = function(socket) {
   Cart.schema.post('save', function (doc) {

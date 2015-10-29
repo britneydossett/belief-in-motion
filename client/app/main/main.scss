@@ -1,16 +1,46 @@
-.thing-form {
-    margin: 20px 0;
+#carousel > div {
+    height: 579px;
+    width: 870px;
+    margin: 0;
 }
 
-#banner {
-    border-bottom: none;
-    margin-top: -20px;
+#carCont > div {
+    width: 870px;
+    padding: 0;
+    margin: 0;
 }
 
-#banner h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+img{
+    height: 100%;
+    max-height: 579px;
+    max-width: 870px;
+    width: 100%;
+}
+
+#carousel {
+    position: relative;
+    width: 870px;
+    height: 579px;
+    margin: 0px;
+}
+
+.carousel-control.right {
+    background-image: none;
+}
+
+.carousel-control.left {
+    background-image: none;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: inline;
+    max-width: 100%;
+    height: auto;
+    line-height: 1.5;
+}
+
+h1, .h1 {
+    margin-bottom: 60px;
 }
 
 .hero-unit {
