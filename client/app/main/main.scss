@@ -39,6 +39,19 @@ img{
     line-height: 1.5;
 }
 
+.malarkey {
+    align: center;
+    margin-top: 200px;
+    margin-bottom: 100px;
+    font-size: 30px;
+    height: 100px;
+}
+
+#scrollArea {
+    margin-bottom: 500px;
+    margin-left: 47%;
+}
+
 h1, .header2 {
     text-align: center;
 }
@@ -63,6 +76,6 @@ h1, .header2 {
   margin-left: 15px;
 }
 
-p {
+.textbox {
     font-size: 20px;
 }

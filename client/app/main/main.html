@@ -1,17 +1,8 @@
 <div class="container">
-  <div ng-app="app" id="carCont">
-    <div ng-controller="CarouselCtrl" id="carousel">
-        <carousel interval="myInterval">
-          <slide ng-repeat="slide in slides" active="slide.active">
-            <img ng-src="{{slide.image}}">
-            <div class="carousel-caption">
-              <h1>Belief in Motion</h1>
-              <p>{{slide.text}}</p>
-            </div>
-          </slide>
-        </carousel>
-    </div>
-  </div>
+    <div class="malarkey"></div>
+</div>
+<div id="scrollArea" ng-controller="ScrollController">
+  <a ng-click="gotoBottom()"><button class="btn btn-success">Learn How to Help</button></a>
 </div>
 <br><br><br>
 
@@ -20,7 +11,7 @@
     <div class="col-lg-12">
       <h1 class="page-header">Features:</h1>
       <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="product in Products">
-        <li><a href="#" tooltip="{{product.description}}">{{product.name}}<button type="button" class="close" ng-click="removeProduct(product)">&times;</button></a></li>
+        <li><a id="bottom" href="#" tooltip="{{product.description}}">{{product.name}}<button type="button" class="close" ng-click="removeProduct(product)">&times;</button></a></li>
       </ul>
     </div>
   </div>
@@ -30,7 +21,7 @@
     <p class="input-group">
       <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
       <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
+        <button type="submit" class="btn btn-success" ng-click="addThing()">Add New</button>
       </span>
     </p>
   </form>
@@ -43,3 +34,20 @@
          <a href="https://github.com/britneydossett">Github</a></p>
   </div>
 </footer>
+
+  <script>
+    var elem = document.querySelector('.malarkey');
+    var opts = {
+      typeSpeed: 50,
+      deleteSpeed: 50,
+      pauseDelay: 1000,
+      loop: true,
+      postfix: ''
+    };
+    malarkey(elem, opts).type('Roma Gypsies typically lack access to stable jobs, affordable housing, and health care.')   .pause().delete()
+                        .type('As a result, poverty, disease, substance abuse and crime plague many Roma communities.') .pause().delete()
+                        .type("Many gypsies are forcibly moved to homes in landfills outside Romania's larger cities.") .pause().delete()
+                        .type('') .pause().delete()
+                        .type('95% of Roma drop out before the 8th grade.')   .pause().delete()
+                        .type('60-70% of the Romanian population lives in rural areas with little to no easy access to schools').pause().delete();
+  </script>

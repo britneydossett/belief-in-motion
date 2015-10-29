@@ -3,6 +3,7 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'font-awesome/scss/font-awesome';
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
 
 /**
  * App-wide Styles
@@ -23,10 +24,31 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
   }
 }
 
-/* Space out content a bit */
+.navbar {
+  font-size: 22px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.navbar-brand {
+  font-size: 36px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+#navbar-main {
+  padding-top: 10px;
+}
+
+.navbar-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 22px;
+
+  ng-binding {
+    padding-top: 0;
+  }
+}
+
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
