@@ -15,7 +15,7 @@ angular.module('beliefInMotionApp')
           image: '/assets/images/boy-spicket.jpg'
         },
         {
-          image: '/assets/images/children.jpg'
+          image: '/assets/images/fall-romania1.jpg'
         }
       ];
 });

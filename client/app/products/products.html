@@ -16,9 +16,9 @@
             <a ng-click="products.goProduct(product)" class="list-group-product">
               <h3>{{ product.name }}</h3>
               <article class="row">
-                <!-- <div class="col-xs-5">
-                  <img class="middle" width=96px src="/assets/images/inventory/{{item.imageFile}}"/>
-                </div> -->
+                <div class="col-xs-5">
+                  <img class="middle" width=200px src="/assets/images/inventory/{{product.imageFile}}"/>
+                </div>
                 <div class="col-xs-7">
                   <dl class="dl-horizontal">
                     <dt>Category:</dt><dd>{{ product.category }}</dd>
@@ -43,7 +43,7 @@
   <ul>
     <li class="cart animate-cart" ng-repeat="cartItem in products.cart">
       <span>{{ cartItem.qty + ' x ' + cartItem.item.name + ' = ' + (products.getCost(cartItem) | currency) }}</span>
-      <button class="btn btn-danger btn-xs" ng-click="products.removeProduct(cartProduct)">Remove Item</button>
+      <button class="btn btn-danger btn-xs" ng-click="products.removeProduct(cartItem)">Remove Item</button>
     </li>
   </ul>
   <h3>Total: {{ products.total | currency }}</h3>

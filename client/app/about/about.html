@@ -1,10 +1,21 @@
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>Belief in Motion</h1>
-    <p class="lead">Using Empowerment and Education to Transform Romania</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+<div>
+  <h1 class="header2">Belief in Motion</h1>
+</div>
+
+<div class="container">
+  <div ng-app="app" id="carCont">
+    <div ng-controller="CarouselCtrl" id="carousel">
+        <carousel interval="myInterval">
+          <slide ng-repeat="slide in slides" active="slide.active">
+            <img ng-src="{{slide.image}}">
+            <div class="carousel-caption">
+             <!--  <h1>Belief in Motion</h1> -->
+            </div>
+          </slide>
+        </carousel>
+    </div>
   </div>
-</header>
+</div>
 
 <div class="container">
   <div class="row">
@@ -18,6 +29,7 @@
   <div>
     <p> Belief in Motion was established in 2007 and mission is to see the lives of impoverished people changed. We believe that education is key to stopping the cycle of poverty and abandoment in Romania. We want children to grow up in an educated environment, where they have the opportunity to get jobs instead of turning to prostitution, stealing, or begging. We also want to empower women by giving them usefufl skills and jobs so they can provide for their family.
     </p>
+    <br>
     <p>The goal when the Roberson family moved to Romania was to start a school. We are well on our way, but we are not there yet.
 
     We launched what we call "Operation Education." In Romania, 95% of Roma drop out before the 8th grade, and almost half of the Romanians will not successfully graduate with a high school diploma.

@@ -18,7 +18,8 @@ Product.find({}).remove(function() {
     category: 'Operation Education',
     name : 'Sponsor a Child',
     description : 'Send a child to school where food is provided.',
-    price: 30.00
+    price: 30.00,
+    imageFile: 'school-work.jpg'
   }, {
     category: 'Operation Education',
     name : 'High School Transportation',

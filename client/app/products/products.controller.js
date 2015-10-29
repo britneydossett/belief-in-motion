@@ -57,7 +57,6 @@ angular.module('beliefInMotionApp')
 
   that.goProduct = function (product) {
     console.log("goProduct: ", product._id);
-    console.log($state.go ('productDetail', product));
     $state.go( 'productDetail', { productId : product._id } );
   };
 

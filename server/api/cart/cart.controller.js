@@ -70,7 +70,9 @@ exports.removeProduct = function(req, res) {
   console.log('userId2: ' + userId + ', productId2: ' + productId);
 
   // Remove the item, get the updated cart, and return the cart
-  User.findById(userId, function(err, user) {
+  User.findById(userId)
+  .populate('cart.item')
+  .exec(function(err, user) {
     if (err) { return handleError(res, err); }
     if (!user) { return res.send(404); }
 
@@ -78,15 +80,14 @@ exports.removeProduct = function(req, res) {
     var found = findProductInCart(user, productId);
     if (found) {
       console.log('Removing product from cart');
-      user.cart.pull(found.item._id);               // pull is a feature of MongooseArray!
+      user.cart.pull(found);  // pull is a feature of MongooseArray!
     }
     else {
       return res.send(404);
     }
     user.save(function() {
-      user.populate('cart.product', function(err, user) {
-        return res.json(201, user.cart );
-      });
+      console.log('returning cart:', JSON.stringify(user.cart));
+      return res.json(201, user.cart);
     });
   });
 };

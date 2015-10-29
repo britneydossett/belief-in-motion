@@ -20,10 +20,10 @@ angular.module('beliefInMotionApp')
     }
   };
 
-  that.removeProduct = function(productId) {
+  that.removeProduct = function(cartItem) {
     var userId = Auth.getCurrentUser()._id;
-    console.log('cart product: ', productId);
-    return $http.delete('/api/users/' + userId + '/cart/' + productId);
+    console.log('cartItem: ', cartItem);
+    return $http.delete('/api/users/' + userId + '/cart/' + cartItem.item._id);
   };
 
   that.getCost = function(cartItem) {
