@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('beliefInMotionApp')
-.controller('ProductsCtrl', function($state, productService, cartService) {
+.controller('ProductsCtrl', function($state, Auth, productService, cartService) {
 
   var that = this;
 
   that.searchText = '';
   that.total = 0;
+
+  that.isLoggedIn = Auth.isLoggedIn;
 
   that.getInventory = function() {
     productService.getProducts().then(function(json) {
@@ -15,22 +17,30 @@ angular.module('beliefInMotionApp')
     });
   };
 
-  cartService.getCart().then(function(json) {
-    that.cart = json.data;
-    console.log('that.cart: ', JSON.stringify(that.cart));
-    that.total = cartService.getTotal(that.cart);
-  });
+  if (Auth.isLoggedIn()) {
+    cartService.getCart().then(function(json) {
+      that.cart = json.data;
+      console.log('that.cart: ', JSON.stringify(that.cart));
+      that.total = cartService.getTotal(that.cart);
+    });
+  }
 
   that.getInventory();
 
   that.addProduct = function(product) {
-    console.log('addProduct:', product);
-    cartService.addProduct(product).then(function(json) {
-      that.cart = json.data;
-      that.total = cartService.getTotal(that.cart);
-    }, function(err) {
-      console.log('ERROR: addProduct post: ' + JSON.stringify(err));
-    });
+    if (Auth.isLoggedIn()) {
+      console.log('addProduct:', product);
+      cartService.addProduct(product).then(function(json) {
+        that.cart = json.data;
+        console.log('addProduct: new cart = ', JSON.stringify(that.cart));
+        that.total = cartService.getTotal(that.cart);
+      }, function(err) {
+        console.log('ERROR: addProduct post: ' + JSON.stringify(err));
+      });
+    }
+    else {
+      $state.go('signup');
+    }
   };
 
   that.removeProduct = function(cartItem) {

@@ -38,10 +38,10 @@
       </div>
 </section>
 
-<section class="cart text-center">
+<section ng-show="products.isLoggedIn()" class="cart text-center">
   <h2>Your Cart:</h2>
   <ul>
-    <li class="cart animate-cart" ng-repeat="cartItem in products.cart">
+    <li class="cart animate-cart" ng-repeat="cartItem in products.cart track by cartItem._id">
       <span>{{ cartItem.qty + ' x ' + cartItem.item.name + ' = ' + (products.getCost(cartItem) | currency) }}</span>
       <button class="btn btn-danger btn-xs" ng-click="products.removeProduct(cartItem)">Remove Item</button>
     </li>
