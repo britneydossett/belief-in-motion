@@ -2,12 +2,20 @@
     <div class="malarkey"></div>
 </div>
 <div id="scrollArea" ng-controller="ScrollController">
-  <a ng-click="gotoBottom()"><button class="btn btn-success">Learn How to Help</button></a>
+  <a ng-click="gotoBottom()"><button class="btn btn-danger btn-lg">Learn How to Help</button></a>
 </div>
 <br><br><br>
 
+<div id="bottom" class="jumbotron">
+    <h1>Belief in Motion</h1>
+    <p>Is an organization that is trying to change the lives of Roma Gypsies through empowerment and education.</p>
+    <p>We are building schools for education. We are providing transportation for those who don't have access to high school.</p>
+    <p>We are empowering women in the community by giving them jobs and skills that keep them from resorting to prostitution.</p>
+    <p><a class="btn btn-success btn-lg" href="/products">Click to Donate</a></p>
+</div>
+
 <div class="container" id="video">
-    <iframe id="bottom" src="https://player.vimeo.com/video/143556458" width="870" height="579" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/143556458">What if? - Piranda Premiere Events!</a> from <a href="https://vimeo.com/beliefinmotion">Belief in Motion</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+    <iframe src="https://player.vimeo.com/video/143556458" width="870" height="579" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/143556458">What if? - Piranda Premiere Events!</a> from <a href="https://vimeo.com/beliefinmotion">Belief in Motion</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 </div>
 
 <footer class="footer">
@@ -27,10 +35,11 @@
       loop: true,
       postfix: ''
     };
-    malarkey(elem, opts).type('Roma Gypsies typically lack access to stable jobs, affordable housing, and health care.')   .pause().delete()
+    malarkey(elem, opts).type("Welcome to Belief in Motion. We're trying to change the lives of Gypsies in Romania.") .pause().delete()
+                        .type('Roma Gypsies typically lack access to stable jobs, affordable housing, and health care.')   .pause().delete()
                         .type('As a result, poverty, disease, substance abuse and crime plague many Roma communities.') .pause().delete()
-                        .type("Many gypsies are forcibly moved to homes in landfills outside Romania's larger cities.") .pause().delete()
-                        .type('') .pause().delete()
+                        .type("Many gypsies are forcibly moved from their homes to landfills outside of larger cities.") .pause().delete()
+                        .type('Roma Gypsies are one of the most persecuted races in the world today.') .pause().delete()
                         .type('95% of Roma drop out before the 8th grade.')   .pause().delete()
                         .type('60-70% of the Romanian population lives in rural areas with little to no easy access to schools').pause().delete();
   </script>

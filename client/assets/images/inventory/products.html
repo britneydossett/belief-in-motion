@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://localhost:9000/products -->
+<html class="no-js"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<base href="/">--><base href=".">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(client) app/vendor.css -->
+      <!-- bower:css -->
+      <link rel="stylesheet" href="./products_files/animate.css">
+      <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,client}) app/app.css -->
+    <link rel="stylesheet" href="./products_files/app.css">
+      <!-- injector:css -->
+      <!-- endinjector -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="beliefInMotionApp" class="ng-scope" cz-shortcut-listen="true">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <!-- ngInclude: 'components/navbar/navbar.html' --><div ng-include="&#39;components/navbar/navbar.html&#39;" class="ng-scope"><div class="navbar navbar-inverse navbar-static-top ng-scope" ng-controller="NavbarCtrl">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="http://localhost:9000/" class="navbar-brand">Belief in Motion</a>
+    </div>
+    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main" style="height: 0px;">
+      <ul class="nav navbar-nav">
+        <!-- ngRepeat: product in menu --><li ng-repeat="product in menu" ng-class="{active: isActive(product.link)}" class="ng-scope" style="">
+            <a ng-href="/" class="ng-binding" href="http://localhost:9000/">Home</a>
+        </li><!-- end ngRepeat: product in menu --><li ng-repeat="product in menu" ng-class="{active: isActive(product.link)}" class="ng-scope">
+            <a ng-href="/about" class="ng-binding" href="http://localhost:9000/about">About</a>
+        </li><!-- end ngRepeat: product in menu --><li ng-repeat="product in menu" ng-class="{active: isActive(product.link)}" class="ng-scope active" style="">
+            <a ng-href="/products" class="ng-binding" href="./products_files/products.html">Donate</a>
+        </li><!-- end ngRepeat: product in menu -->
+        <li ng-show="isAdmin()" ng-class="{active: isActive(&#39;/admin&#39;)}" class="ng-hide"><a href="http://localhost:9000/admin">Admin</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive(&#39;/signup&#39;)}" class="ng-hide" style=""><a href="http://localhost:9000/signup">Sign up</a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive(&#39;/login&#39;)}" class="ng-hide" style=""><a href="http://localhost:9000/login">Login</a></li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive(&#39;/settings&#39;)}" class="" style=""><a href="http://localhost:9000/settings">Settings</a></li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive(&#39;/logout&#39;)}" class=""><a href="" ng-click="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+    <!-- uiView:  --><div ui-view="" class="ng-scope"><section class="container search ng-scope">
+  <h1>Current Needs:</h1>
+</section>
+<section class="container items ng-scope">
+  <div class="list-group">
+    <article class="items col-sm-9">
+        <div class="row">
+          <!-- ngRepeat: product in products.inventory --><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animate-inventory ng-scope" ng-repeat="product in products.inventory" style="">
+               <!-- filteredProducts = ( products.inventory | productFilter : products.searchText | orderBy: ['category', 'price'] ) -->
+            <a ng-click="products.goProduct(product)" class="list-group-product">
+              <h3 class="ng-binding">Donation</h3>
+              <article class="row">
+                <div class="col-xs-5">
+                  <img class="middle" width="200px" src="./products_files/donation.jpg">
+                </div>
+                <div class="col-xs-7">
+                  <dl class="dl-horizontal">
+                    <dt>Category:</dt><dd class="ng-binding">Donation</dd>
+                    <dt>Price:</dt><dd class="ng-binding">$15.00</dd>
+                  </dl>
+                </div>
+              </article>
+            </a>
+            <div class="text-center">
+              <button class="btn btn-sm btn-info" ng-click="products.addProduct(product)">Add to Cart</button>
+            </div>
+          </div><!-- end ngRepeat: product in products.inventory --><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animate-inventory ng-scope" ng-repeat="product in products.inventory">
+               <!-- filteredProducts = ( products.inventory | productFilter : products.searchText | orderBy: ['category', 'price'] ) -->
+            <a ng-click="products.goProduct(product)" class="list-group-product">
+              <h3 class="ng-binding">Sponsor a Child</h3>
+              <article class="row">
+                <div class="col-xs-5">
+                  <img class="middle" width="200px" src="./products_files/school-work.jpg">
+                </div>
+                <div class="col-xs-7">
+                  <dl class="dl-horizontal">
+                    <dt>Category:</dt><dd class="ng-binding">Operation Education</dd>
+                    <dt>Price:</dt><dd class="ng-binding">$30.00</dd>
+                  </dl>
+                </div>
+              </article>
+            </a>
+            <div class="text-center">
+              <button class="btn btn-sm btn-info" ng-click="products.addProduct(product)">Add to Cart</button>
+            </div>
+          </div><!-- end ngRepeat: product in products.inventory --><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animate-inventory ng-scope" ng-repeat="product in products.inventory">
+               <!-- filteredProducts = ( products.inventory | productFilter : products.searchText | orderBy: ['category', 'price'] ) -->
+            <a ng-click="products.goProduct(product)" class="list-group-product">
+              <h3 class="ng-binding">High School Transportation</h3>
+              <article class="row">
+                <div class="col-xs-5">
+                  <img class="middle" width="200px" src="./products_files/romania-bus.jpg">
+                </div>
+                <div class="col-xs-7">
+                  <dl class="dl-horizontal">
+                    <dt>Category:</dt><dd class="ng-binding">Operation Education</dd>
+                    <dt>Price:</dt><dd class="ng-binding">$55.00</dd>
+                  </dl>
+                </div>
+              </article>
+            </a>
+            <div class="text-center">
+              <button class="btn btn-sm btn-info" ng-click="products.addProduct(product)">Add to Cart</button>
+            </div>
+          </div><!-- end ngRepeat: product in products.inventory --><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animate-inventory ng-scope" ng-repeat="product in products.inventory">
+               <!-- filteredProducts = ( products.inventory | productFilter : products.searchText | orderBy: ['category', 'price'] ) -->
+            <a ng-click="products.goProduct(product)" class="list-group-product">
+              <h3 class="ng-binding">Build a Middle School</h3>
+              <article class="row">
+                <div class="col-xs-5">
+                  <img class="middle" width="200px" src="./products_files/middle-school.jpg">
+                </div>
+                <div class="col-xs-7">
+                  <dl class="dl-horizontal">
+                    <dt>Category:</dt><dd class="ng-binding">Operation Education</dd>
+                    <dt>Price:</dt><dd class="ng-binding">$25.00</dd>
+                  </dl>
+                </div>
+              </article>
+            </a>
+            <div class="text-center">
+              <button class="btn btn-sm btn-info" ng-click="products.addProduct(product)">Add to Cart</button>
+            </div>
+          </div><!-- end ngRepeat: product in products.inventory --><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animate-inventory ng-scope" ng-repeat="product in products.inventory">
+               <!-- filteredProducts = ( products.inventory | productFilter : products.searchText | orderBy: ['category', 'price'] ) -->
+            <a ng-click="products.goProduct(product)" class="list-group-product">
+              <h3 class="ng-binding">Boarding School for 2 Orphans</h3>
+              <article class="row">
+                <div class="col-xs-5">
+                  <img class="middle" width="200px" src="./products_files/orphans.jpg">
+                </div>
+                <div class="col-xs-7">
+                  <dl class="dl-horizontal">
+                    <dt>Category:</dt><dd class="ng-binding">Operation Education</dd>
+                    <dt>Price:</dt><dd class="ng-binding">$40.00</dd>
+                  </dl>
+                </div>
+              </article>
+            </a>
+            <div class="text-center">
+              <button class="btn btn-sm btn-info" ng-click="products.addProduct(product)">Add to Cart</button>
+            </div>
+          </div><!-- end ngRepeat: product in products.inventory --><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animate-inventory ng-scope" ng-repeat="product in products.inventory">
+               <!-- filteredProducts = ( products.inventory | productFilter : products.searchText | orderBy: ['category', 'price'] ) -->
+            <a ng-click="products.goProduct(product)" class="list-group-product">
+              <h3 class="ng-binding">Piranda Flats -- Dignity</h3>
+              <article class="row">
+                <div class="col-xs-5">
+                  <img class="middle" width="200px" src="./products_files/dignity.jpg">
+                </div>
+                <div class="col-xs-7">
+                  <dl class="dl-horizontal">
+                    <dt>Category:</dt><dd class="ng-binding">Empowerment</dd>
+                    <dt>Price:</dt><dd class="ng-binding">$48.00</dd>
+                  </dl>
+                </div>
+              </article>
+            </a>
+            <div class="text-center">
+              <button class="btn btn-sm btn-info" ng-click="products.addProduct(product)">Add to Cart</button>
+            </div>
+          </div><!-- end ngRepeat: product in products.inventory --><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animate-inventory ng-scope" ng-repeat="product in products.inventory">
+               <!-- filteredProducts = ( products.inventory | productFilter : products.searchText | orderBy: ['category', 'price'] ) -->
+            <a ng-click="products.goProduct(product)" class="list-group-product">
+              <h3 class="ng-binding">Piranda Flats -- Faith</h3>
+              <article class="row">
+                <div class="col-xs-5">
+                  <img class="middle" width="200px" src="./products_files/faith.jpg">
+                </div>
+                <div class="col-xs-7">
+                  <dl class="dl-horizontal">
+                    <dt>Category:</dt><dd class="ng-binding">Empowerment</dd>
+                    <dt>Price:</dt><dd class="ng-binding">$48.00</dd>
+                  </dl>
+                </div>
+              </article>
+            </a>
+            <div class="text-center">
+              <button class="btn btn-sm btn-info" ng-click="products.addProduct(product)">Add to Cart</button>
+            </div>
+          </div><!-- end ngRepeat: product in products.inventory --><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animate-inventory ng-scope" ng-repeat="product in products.inventory">
+               <!-- filteredProducts = ( products.inventory | productFilter : products.searchText | orderBy: ['category', 'price'] ) -->
+            <a ng-click="products.goProduct(product)" class="list-group-product">
+              <h3 class="ng-binding">Piranda Flats -- Hope</h3>
+              <article class="row">
+                <div class="col-xs-5">
+                  <img class="middle" width="200px" src="./products_files/hope.jpg">
+                </div>
+                <div class="col-xs-7">
+                  <dl class="dl-horizontal">
+                    <dt>Category:</dt><dd class="ng-binding">Empowerment</dd>
+                    <dt>Price:</dt><dd class="ng-binding">$48.00</dd>
+                  </dl>
+                </div>
+              </article>
+            </a>
+            <div class="text-center">
+              <button class="btn btn-sm btn-info" ng-click="products.addProduct(product)">Add to Cart</button>
+            </div>
+          </div><!-- end ngRepeat: product in products.inventory -->
+          <div class="animate-inventory text-center ng-hide" ng-hide="products.inventory.length" style="">
+            <h3>No items match your search.</h3>
+          </div>
+        </div>
+      </article></div>
+    
+
+  <article class="col-sm-3">
+    <section ng-show="products.isLoggedIn()" class="cart text-center">
+      <h2>Your Cart:</h2>
+      <ul>
+        <!-- ngRepeat: cartItem in products.cart -->
+      </ul>
+      <h3 class="ng-binding">Total: $0.00</h3>
+      <br>
+      <button class="btn btn-danger" ng-click="products.clearCart()">Clear Cart</button>
+    </section>
+  </article>
+</section>
+</div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script async="" src="./products_files/analytics.js"></script><script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-XXXXX-X');
+      ga('send', 'pageview');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- build:js({client,node_modules}) app/vendor.js -->
+      <!-- bower:js -->
+      <script src="./products_files/jquery.js"></script>
+      <script src="./products_files/angular.js"></script>
+      <script src="./products_files/angular-resource.js"></script>
+      <script src="./products_files/angular-cookies.js"></script>
+      <script src="./products_files/angular-sanitize.js"></script>
+      <script src="./products_files/ui-bootstrap-tpls.js"></script>
+      <script src="./products_files/lodash.compat.js"></script>
+      <script src="./products_files/socket.js"></script>
+      <script src="./products_files/angular-ui-router.js"></script>
+      <script src="./products_files/angular-animate.js"></script>
+      <!-- endbower -->
+      <script src="./products_files/socket.io.js"></script>
+      <script src="./products_files/malarkey.min.js"></script>
+    <!-- endbuild -->
+
+
+        <!-- build:js({.tmp,client}) app/app.js -->
+
+        <script src="./products_files/app.js"></script>
+          <!-- injector:js -->
+          <script src="./products_files/about.controller.js"></script>
+          <script src="./products_files/carousel.controller.js"></script>
+          <script src="./products_files/account.js"></script>
+          <script src="./products_files/login.controller.js"></script>
+          <script src="./products_files/settings.controller.js"></script>
+          <script src="./products_files/signup.controller.js"></script>
+          <script src="./products_files/admin.controller.js"></script>
+          <script src="./products_files/admin.js"></script>
+          <script src="./products_files/cartService.service.js"></script>
+          <script src="./products_files/main.controller.js"></script>
+          <script src="./products_files/main.js"></script>
+          <script src="./products_files/scroller.controller.js"></script>
+          <script src="./products_files/productDetail.controller.js"></script>
+          <script src="./products_files/productDetail.js"></script>
+          <script src="./products_files/productFilter.filter.js"></script>
+          <script src="./products_files/productService.service.js"></script>
+          <script src="./products_files/products.controller.js"></script>
+          <script src="./products_files/products.js"></script>
+          <script src="./products_files/auth.service.js"></script>
+          <script src="./products_files/user.service.js"></script>
+          <script src="./products_files/modal.service.js"></script>
+          <script src="./products_files/mongoose-error.directive.js"></script>
+          <script src="./products_files/navbar.controller.js"></script>
+          <script src="./products_files/socket.service.js"></script>
+          <!-- endinjector -->
+        <!-- endbuild -->
+
+<script>//<![CDATA[
+document.write('<script src="//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1"><\/script>')
+//]]></script><script src="./products_files/livereload.js"></script>
+
+
+</body></html>

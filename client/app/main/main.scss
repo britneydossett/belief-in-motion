@@ -45,11 +45,17 @@ img{
     font-size: 30px;
     height: 100px;
     font-family: 'Josefin Sans', sans-serif;
+    color: #93c8ff;
 }
 
 .btn {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 25px;
+}
+
+.btn-success {
+    background-color: #c6e2ff;
+    border: #add5ff;
 }
 
 #scrollArea {
@@ -81,6 +87,7 @@ h1, .header2 {
 
 #video {
     padding-top: 20px;
+    vertical-align: center;
 }
 
 .textbox {

@@ -3,7 +3,7 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'font-awesome/scss/font-awesome';
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans|Cinzel);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans|Cinzel|Gochi+Hand);
 
 /**
  * App-wide Styles
@@ -25,15 +25,15 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 }
 
 .navbar {
-  font-size: 22px;
+  font-size: 20px;
   font-family: 'Josefin Sans', sans-serif;
   padding-top: 10px;
 }
 
 .navbar-brand {
-  font-size: 36px;
-  padding-right: 20px;
-  font-family: 'Cinzel', serif;
+  font-size: 34px;
+  padding-right: 30px;
+  font-family: 'Gochi Hand', cursive;
 }
 
 #navbar-main {
@@ -42,15 +42,23 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 
 .navbar-text {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 22px;
+  font-size: 20px;
 
   ng-binding {
     /*padding-top: 0;*/
   }
 }
 
+.navbar-inverse .navbar-brand{
+  color: #c6e2ff;
+}
+
 body {
   font-family: 'Josefin Sans', sans-serif;
+}
+
+.container .items {
+  padding-top: 15px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -93,6 +101,7 @@ body {
   .btn {
     font-size: 21px;
     padding: 14px 24px;
+    font-family: 'Josefin Sans', sans-serif;
   }
 }
 

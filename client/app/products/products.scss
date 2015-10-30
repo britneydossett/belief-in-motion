@@ -73,7 +73,8 @@ $animation-duration: 0.25s;
 }
 
 .items h3 {
-  color: #337ab7;
+  color: #93c8ff;
+  font-size: 25px;
 }
 
 .item {
@@ -90,6 +91,20 @@ $animation-duration: 0.25s;
 }
 
 .item-image img {
+}
+
+dt {
+  font-size: 22px;
+  color: #999999;
+}
+
+dd {
+  font-size: 18px;
+  color: #999999;
+}
+
+.btn-sm {
+  font-size: 22px;
 }
 
 .back {

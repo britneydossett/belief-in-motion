@@ -28,7 +28,7 @@ angular.module('beliefInMotionApp')
 
   that.getCost = function(cartItem) {
     console.log('getCost function: ', cartItem);
-      return cartItem.qty * cartItem.item.price;
+      return cartItem.qty * cartItem.price;
   };
 
   that.getTotal = function(cart) {

@@ -13,7 +13,8 @@ Product.find({}).remove(function() {
     category: 'Donation',
     name : 'Donation',
     description : 'This donation may be used for any need.',
-    price: 15.00
+    price: 15.00,
+    imageFile: 'donation.jpg'
   }, {
     category: 'Operation Education',
     name : 'Sponsor a Child',
@@ -23,33 +24,39 @@ Product.find({}).remove(function() {
   }, {
     category: 'Operation Education',
     name : 'High School Transportation',
-    info : 'Help a high schooler have safe transportation to school every day.',
-    price: 55.00
+    description : 'Help a high schooler have safe transportation to school every day.',
+    price: 55.00,
+    imageFile: 'romania-bus.jpg'
   },  {
     category: 'Operation Education',
     name : 'Build a Middle School',
-    info : 'Help us build a middle school for children in Sintelec.',
-    price: 25.00
+    description : 'Help us build a middle school for children in Sintelec.',
+    price: 25.00,
+    imageFile: 'middle-school.jpg'
   },  {
     category: 'Operation Education',
     name : 'Boarding School for 2 Orphans',
-    info : 'We offer them an education and keep them from having to resort to perpetuating the cycle of poverty and abandonment.',
-    price: 40.00
+    description : 'We offer them an education and keep them from having to resort to perpetuating the cycle of poverty and abandonment.',
+    price: 40.00,
+    imageFile: 'orphans.jpg'
   },{
     category: 'Empowerment',
     name : 'Piranda Flats -- Dignity',
-    info : '"Take a walk in our shoes". These shoes were designed in Romania, and inspired by traditional Romanian prints. EACH PURCHASE will be reinvested into the lives of impoverished families through Evangelism, Education, Empowerment and Establishment.',
-    price: 48.00
+    description : '"Take a walk in our shoes". These shoes were designed in Romania, and inspired by traditional Romanian prints. EACH PURCHASE will be reinvested into the lives of impoverished families through Evangelism, Education, Empowerment and Establishment.',
+    price: 48.00,
+    imageFile: 'dignity.jpg'
   },{
     category: 'Empowerment',
     name : 'Piranda Flats -- Faith',
-    info : '"Take a walk in our shoes". These shoes were designed in Romania, and inspired by traditional Romanian prints. EACH PURCHASE will be reinvested into the lives of impoverished families through Evangelism, Education, Empowerment and Establishment.',
-    price: 48.00
+    description : '"Take a walk in our shoes". These shoes were designed in Romania, and inspired by traditional Romanian prints. EACH PURCHASE will be reinvested into the lives of impoverished families through Evangelism, Education, Empowerment and Establishment.',
+    price: 48.00,
+    imageFile: 'faith.jpg'
   }, {
     category: 'Empowerment',
     name : 'Piranda Flats -- Hope',
-    info : '"Take a walk in our shoes". These shoes were designed in Romania, and inspired by traditional Romanian prints. EACH PURCHASE will be reinvested into the lives of impoverished families through Evangelism, Education, Empowerment and Establishment.',
-    price: 48.00
+    description : '"Take a walk in our shoes". These shoes were designed in Romania, and inspired by traditional Romanian prints. EACH PURCHASE will be reinvested into the lives of impoverished families through Evangelism, Education, Empowerment and Establishment.',
+    price: 48.00,
+    imageFile: 'hope.jpg'
   },
   function() {
       Product.find(function (err, products) {
