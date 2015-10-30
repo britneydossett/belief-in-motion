@@ -1,11 +1,10 @@
-#carousel > div {
-    height: 579px;
-    width: 870px;
-    margin: 0;
+#carousel.ng-scope {
+    max-width: 870px;
+    margin: auto;
 }
 
 #carCont > div {
-    width: 870px;
+    width: 100%;
     padding: 0;
     margin: 0;
 }
@@ -45,15 +44,23 @@ img{
     margin-bottom: 100px;
     font-size: 30px;
     height: 100px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.btn {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 25px;
 }
 
 #scrollArea {
-    margin-bottom: 500px;
+    margin-bottom: 300px;
     margin-left: 47%;
 }
 
 h1, .header2 {
     text-align: center;
+    font-family: 'Cinzel', serif;
+    padding-top: 10px;
 }
 
 .hero-unit {
@@ -72,8 +79,8 @@ h1, .header2 {
     border-top: 1px solid #E5E5E5;
 }
 
-.navbar-text {
-  margin-left: 15px;
+#video {
+    padding-top: 20px;
 }
 
 .textbox {

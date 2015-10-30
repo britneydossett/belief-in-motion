@@ -6,25 +6,8 @@
 </div>
 <br><br><br>
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="product in Products">
-        <li><a id="bottom" href="#" tooltip="{{product.description}}">{{product.name}}<button type="button" class="close" ng-click="removeProduct(product)">&times;</button></a></li>
-      </ul>
-    </div>
-  </div>
-
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-success" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
+<div class="container" id="video">
+    <iframe id="bottom" src="https://player.vimeo.com/video/143556458" width="870" height="579" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/143556458">What if? - Piranda Premiere Events!</a> from <a href="https://vimeo.com/beliefinmotion">Belief in Motion</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 </div>
 
 <footer class="footer">

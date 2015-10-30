@@ -3,7 +3,7 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'font-awesome/scss/font-awesome';
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans|Cinzel);
 
 /**
  * App-wide Styles
@@ -27,16 +27,17 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 .navbar {
   font-size: 22px;
   font-family: 'Josefin Sans', sans-serif;
+  padding-top: 10px;
 }
 
 .navbar-brand {
   font-size: 36px;
   padding-right: 20px;
-  padding-top: 10px;
+  font-family: 'Cinzel', serif;
 }
 
 #navbar-main {
-  padding-top: 10px;
+  width: 100%;
 }
 
 .navbar-text {
@@ -44,11 +45,12 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
   font-size: 22px;
 
   ng-binding {
-    padding-top: 0;
+    /*padding-top: 0;*/
   }
 }
 
 body {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -106,7 +108,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 900px;
+    min-width: 850px;
   }
 
   /* Remove the padding we set earlier */
