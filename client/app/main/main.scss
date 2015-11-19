@@ -88,7 +88,11 @@ h1, .header2 {
 
 #video {
     padding-top: 20px;
-    vertical-align: center;
+    text-align:center;
+    width:100%;
+}
+iframe {
+  width: 870px;
 }
 
 .textbox {

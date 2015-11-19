@@ -5,6 +5,7 @@ Belief in Motion is a website for my friend's organization. Belief in Motion was
 
 ##Technologies Used
 
+* Javascript
 * MongoDB/Mongoose
 * Express
 * Angular

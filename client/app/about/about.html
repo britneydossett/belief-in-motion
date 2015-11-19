@@ -5,7 +5,7 @@
 <div class="container">
   <div ng-app="app" id="carCont">
     <div ng-controller="CarouselCtrl" id="carousel">
-        <carousel interval="myInterval">
+        <carousel interval="myInterval" disable-ng-animate>
           <slide ng-repeat="slide in slides" active="slide.active">
             <img ng-src="{{slide.image}}">
           </slide>
